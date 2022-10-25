@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Avaleht</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div th:include="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row rowMargin">
+            <div class="col">
+                <div class="blueBg">Lorem ipsum dolor sit amet, consectetur <b>adipiscing</b> elit, sed do eiusmod tempor incididunt ut labore et dolore <b>magna aliqua</b>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut <b>aliquip</b> ex ea commodo consequat.</div>
+            </div>
+            <div class="col">
+                <img th:src="@{images/pilt.jpg}" alt="pilt"></a>
+            </div>
+        </div>
+
+        <div class="row rowMargin">
+            <div class="col">
+                <div class="allEvents blueBg">
+                    <h5>Tulevased üritused</h5>
+                </div>
+                <table>
+                    <tbody>
+                    <tr th:each="ev, index : ${eventList}">
+                        <td th:text="${index.count} + '. ' + ${ev.eventName}"></td>
+                        <td th:text="${ev.dateTime}"></td>
+                        <td>
+                            <a th:href="@{/events/{id}(id=${ev.id})}">OSAVÕTJAD</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/events/{id}/delete(id=${ev.id})}"><img th:src="@{images/remove.svg}" alt="logo" width="20"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a th:href="@{/events}" >LISA ÜRITUS</a>
+            </div>
+
+            <div class="col">
+                <div class="allEvents blueBg">
+                    <h5>Toimunud üritused</h5>
+                </div>
+                <table>
+                    <tbody>
+                    <tr th:each="ev, index : ${eventList}">
+                        <td th:text="${index.count} + '. ' + ${ev.eventName}"></td>
+                        <td th:text="${ev.dateTime}"></td>
+                        <td>
+                            <a th:href="@{/events/{id}(id=${ev.id})}">OSAVÕTJAD</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div th:include="fragments/footer :: footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+.navbarItem {
+    padding-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #eef2f5;
+}
+
+.blueBg {
+    background-color: #005aa1;
+    color: white;
+}
+
+.headerMargin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.rowMargin {
+    margin-bottom: 15px;
+}
+
+.footer {
+    background-color: #373737;
+    margin-bottom: 15px;
+}
+
+.emptySpace {
+    visibility: hidden;
+}
+
+.nav-item.active , .nav-item.active a {
+  color: #4ba67f;
+  font-weight: bold;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.participantsPage {
+    display:block;
+    width:50%;
+    margin:0 auto;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="row" th:fragment="header">
+    <div class="container">
+        <div class="headerMargin">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <a class="navbar-brand" href="/">
+                    <img th:src="@{images/logo.svg}" alt="logo" width="150">
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">AVALEHT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/events" class="nav-link">ÜRITUSE LISAMINE</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex">
+                    <a class="navbar-brand" href="/">
+                        <img th:src="@{images/symbol.svg}" alt="symbol" width="50">
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

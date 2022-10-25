@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Osaleja muutmine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:include="fragments/header :: header"></div>
+<div class="container rowMargin">
+
+  <div id="participantForm">
+    <form action="#" th:action="@{/participants/{id}/business(id=${id})}" th:object="${participant}" th:method="PUT">
+      <div th:if="${participant instanceof T(RIK.eventmanager.participant.BusinessParticipant)}">
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Ettevõtte juriidiline nimi:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{legalName}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Ettevõtte registrikood:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{regCode}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Ettevõttest tulevate osavõtjate arv:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{participantCount}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Maksmisviis:</label>
+          <div class="col-sm-6">
+            <select class="form-select" name="paymentMethod">
+              <option th:each="pm : ${T(RIK.eventmanager.participant.Participant.PaymentMethod).values()}"
+                      th:value="${pm}" th:text="${pm}"></option>
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Lisainfo</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{additionalInfoBusiness}" type="text">
+          </div>
+        </div>
+        <div class="row rowMargin">
+          <div class="col-sm-offset-2 col-sm-8">
+            <a href="/" class="btn btn-outline-dark">Tagasi</a>
+            <input type="submit" class="btn btn-primary" value="Salvesta">
+          </div>
+        </div>
+      </div>
+
+      <div th:unless="${participant instanceof T(RIK.eventmanager.participant.BusinessParticipant)}">
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Eesnimi:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{firstName}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Perekonnanimi:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{lastName}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Isikukood:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{idNumber}" type="text">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 col-form-label">Maksmisviis:</label>
+          <div class="col-sm-6">
+            <select class="form-select" name="paymentMethod">
+              <option th:each="pm : ${T(RIK.eventmanager.participant.Participant.PaymentMethod).values()}"
+                      th:value="${pm}" th:text="${pm}"></option>
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row rowMargin">
+          <label class="col-sm-2 col-form-label">Lisainfo:</label>
+          <div class="col-sm-6">
+            <input class="form-control" th:field="*{additionalInfoIndividual}" type="text">
+          </div>
+        </div>
+
+        <a href="/" class="btn btn-outline-dark">Tagasi</a>
+        <input type="submit" value="Salvesta" class="btn btn-primary" th:formaction="'/participants/' + ${participant.id} + '/individual'">
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+<div th:include="fragments/footer :: footer"></div>
+</body>
+
+</html>
